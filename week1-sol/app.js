@@ -12,15 +12,18 @@ angular.module('LunchCheck',[])
 		$scope.message = "" ;
 		$scope.CountItem = function (){
 			var separtor = ','
+			if ($scope.Items.length==0)
+				$scope.message = "Enter lucnh items first!";
+			else {
 			var items = $scope.Items.split(separtor);
 			//console.log(items.length);
 			//console.log('okay')
-			if ($scope.Items.length==0)
-				$scope.message = "Enter lucnh items first!";
-			else if (items.length<=3)
+			
+			if (items.length<=3)
 				$scope.message = "Enjoy!";
 			else
 				$scope.message = "Too Much!";
+			}
 		};
 	}
 	//console.log("ok");
