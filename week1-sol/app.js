@@ -15,7 +15,9 @@ angular.module('LunchCheck',[])
 			var items = $scope.Items.split(separtor);
 			//console.log(items.length);
 			//console.log('okay')
-			if (items.length<=3)
+			if ($scope.Items.length==0)
+				$scope.message = "Enter lucnh items first!";
+			else if (items.length<=3)
 				$scope.message = "Enjoy!";
 			else
 				$scope.message = "Too Much!";
