@@ -1,0 +1,7 @@
+<div ng-if="crt.foundItems.length===0 ">{{crt.error}}</div>
+<ul ng-repeat="item in crt.foundItems"> 
+<li> {{item.name}} </li>
+<li> {{item.short_name}} </li> 
+<li> {{item.description}} </li> 
+<button ng-click="crt.remove($index);">Don't want this one</button>
+</ul>
