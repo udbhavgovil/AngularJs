@@ -1,7 +1,7 @@
-<div ng-if="crt.foundItems.length===0 ">{{crt.error}}</div>
-<ul ng-repeat="item in crt.foundItems"> 
+<div > {{fid.msg}}</div>
+<ul ng-repeat="item in fid.found" ng-if="fid.found.length>0"> 
 <li> {{item.name}} </li>
 <li> {{item.short_name}} </li> 
 <li> {{item.description}} </li> 
-<button ng-click="crt.remove($index);">Don't want this one</button>
+<button ng-click="fid.onRemove({index : $index});">Don't want this one</button>
 </ul>

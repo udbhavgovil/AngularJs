@@ -8,8 +8,26 @@
 	function FoundItems(){
 		var ddo = {
 			templateUrl : 'found.html',
+			scope: {
+		        found: '<',
+		        onRemove: '&',
+		        msg: '@error'
+		     },
+			controller : FoundItemsDirective,
+			controllerAs : 'fid',
+			bindToController :  true
 		};
+		
 		return ddo;
+	}
+	FoundItemsDirective.$inject = ['MenuSearchService'];
+	function FoundItemsDirective (MenuSearchService)
+	{
+		var fid = this;
+		fid.isEmpty = function() {
+      return fid.found != undefined && fid.found.length === 0;
+    }
+
 	}
 	function NarrowItDownController(MenuSearchService)
 	{
@@ -18,27 +36,23 @@
 		crt.value = "";
 		crt.error = "";
 		crt.narrowit = function (value) {
-	//		console.log(value);
-			
+	
 			var found = MenuSearchService.getMatchedMenusItems(value);
-				found.then (function (response)
+				found.then(function (response)
 				{
-	//				console.log(response);
 					crt.foundItems = response;
 					if (crt.foundItems.length > 0)
 					crt.error = "";			
-				if (crt.foundItems.length === 0 || crt.foundItems === undefined || value === "")
-				{
-					crt.error = "Nothing Found!";
-					crt.foundItems = [];
-				}
-				})
-				//console.log(crt.foundItems);
-				
-				
-			};
+					if (crt.foundItems.length === 0 || crt.foundItems === undefined || value === "")
+					{
+						crt.error = "Nothing Found!";
+						crt.foundItems = [];
+					}
+
+				})};
 		crt.remove = function (value)
 		{
+			console.log(value);
 			crt.foundItems.splice(value,1);
 		}
 		
