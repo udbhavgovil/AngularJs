@@ -8,13 +8,6 @@
 	function FoundItems(){
 		var ddo = {
 			templateUrl : 'found.html',
-			scope : {
-				onRemove: '&',
-				items : '<'
-			}
-			controller: FoundItemsDirectiveController,
-      		controllerAs: 'list',
-      		bindToController: true
 		};
 		return ddo;
 	}
@@ -25,12 +18,12 @@
 		crt.value = "";
 		crt.error = "";
 		crt.narrowit = function (value) {
-			console.log(value);
+	//		console.log(value);
 			
 			var found = MenuSearchService.getMatchedMenusItems(value);
 				found.then (function (response)
 				{
-					console.log(response);
+	//				console.log(response);
 					crt.foundItems = response;
 					if (crt.foundItems.length > 0)
 					crt.error = "";			
