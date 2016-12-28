@@ -8,7 +8,10 @@
 	function FoundItems(){
 		var ddo = {
 			templateUrl : 'found.html',
-
+			scope : {
+				onRemove: '&',
+				items : '<'
+			}
 		};
 		return ddo;
 	}
